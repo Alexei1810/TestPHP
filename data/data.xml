@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<users>
+<user>
+<login>login</login>
+<password>password</password>
+<email>qwe@gmail.com</email>
+<name>Alex</name>
+</user>
+<user>
+<login>hhh</login>
+<password>pass</password>
+<email>tehdndg@gmail.com</email>
+<name>Bob</name>
+</user>
+</users>
