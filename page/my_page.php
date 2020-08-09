@@ -1,3 +1,5 @@
 <?php
-var_dump($_POST);
+echo 'Hello, ' . $_GET['name'] . '!';
+
+/*Необходимо вставлять имя используя cookie  */
 ?>

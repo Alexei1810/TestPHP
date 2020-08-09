@@ -1,3 +1,75 @@
 <?php 
-var_dump($_POST);
+//create obj Validator
+require_once './../validation/Validator.php';
+$validator=new Validator();
+
+$error=Array();
+if($_POST['login']===''){
+    $error[]='login';
+}
+if($_POST['password']===''){
+    $error[]='password';
+}
+if($_POST['confirm_password']===''){
+    $error[]='confirm_password';
+}
+if($_POST['email']===''){
+    $error[]='email';
+}
+if($_POST['name']===''){
+    $error[]='name';
+}
+
+
+$response=[
+    'status'=> true,
+    'error'=> $error
+];
+//validation not empty
+if(!empty($response['error'])){
+    $response['status']=false;
+    $response['message']=0;
+    echo json_encode($response);
+    die();
+}else{
+    
+
+    //validation is login exist
+
+    if($validator->loginExists($_POST['login'])){
+        $response['status']=false;
+        $response['message']=1;
+        echo json_encode($response);
+        die();
+    }
+
+    //validation is email exist
+
+    if($validator->emailExists($_POST['email'])){
+        $response['status']=false;
+        $response['message']=2;
+        echo json_encode($response);
+        die();
+    }
+
+    //validation is password appropriate 
+
+    if(!$validator->checkPasswords($_POST['password'], $_POST['confirm_password'])){
+        $response['status']=false;
+        $response['message']=3;
+        echo json_encode($response);
+        die();
+    }
+
+    //create account
+    require_once '../logic/Logic.php';
+    $logic=new Logic();
+    $logic->registration($_POST['login'], $_POST['password'], $_POST['email'], $_POST['name']);
+    
+
+
+}
+
+
+echo json_encode($response);
 ?>

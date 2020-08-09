@@ -12,4 +12,13 @@
 <email>tehdndg@gmail.com</email>
 <name>Bob</name>
 </user>
-</users>
+<user>
+<login>admin</login>
+<password>123</password>
+<email>admin@gmail.com</email>
+<name>Administrator</name>
+</user>
+<user><login>new</login><password>1</password><email>new@gmail.com</email><name>h</name></user>
+<user><login>ivan</login><password>1</password><email>ivan@gmail.com</email><name>&#x418;&#x432;&#x430;&#x43D;</name>
+</user>
+<user><login>uuu</login><password>d8578edf8458ce06fbc5bb76a58c5ca4</password><email>jjj@m</email><name>jon</name></user><user><login>yyy</login><password>76d80224611fc919a5d54f0ff9fba446</password><email>yyy@gmail.com</email><name>rty</name></user></users>
