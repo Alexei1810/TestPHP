@@ -20,8 +20,7 @@ $(document).ready(function () {
         //------------
 
         if (data.status == true) {
-          //!!!!!!!!!!!!!! ПЕРЕДАЮ ИМЯ В ПАРАМЕТРАХ, ПОМЕНЯТЬ НА COOKIE
-          document.location.href = "page/my_page.php?name=" + data.name[0];
+          document.location.href = "page/my_page.php";
         }
 
         if (data.status == false) {

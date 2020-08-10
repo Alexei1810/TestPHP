@@ -1,5 +1,4 @@
 <?php
-echo 'Hello, ' . $_GET['name'] . '!';
+echo 'Hello, ' . $_COOKIE['name'] . '!';
 
-/*Необходимо вставлять имя используя cookie  */
 ?>

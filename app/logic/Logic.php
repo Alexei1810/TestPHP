@@ -10,9 +10,7 @@ class Logic{
 
     public function registration($login, $password, $email, $name){
         $login=htmlspecialchars($login);
-        //!!!!!!!!!!!!!!!!!!!!!!!
-        // $password=md5($password);
-        $password=htmlspecialchars($password);
+        $password=md5($password);
         $email=htmlspecialchars($email);
         $name=htmlspecialchars($name);
         $this->dao->insertUser($login, $password, $email, $name);
@@ -24,16 +22,11 @@ class Logic{
         $xml=$this->dao->selectUsers();
         foreach($xml as $user){
             if($user->login==$login){
-
-               $_SESSION['login']=$user->login;
-               $_SESSION['password']=$user->password;
-               $_SESSION['email']=$user->email;
-               $_SESSION['name']=$user->name;
-
-               $_COOKIE['login']=$user->login;
-               $_COOKIE['password']=$user->password;
-               $_COOKIE['email']=$user->email;
-               $_COOKIE['name']=$user->name;
+                
+                setcookie('login', $user->login, 0, '/');
+                setcookie('password', $user->password, 0, '/');
+                setcookie('email', $user->email, 0, '/');
+                setcookie('name', $user->name, 0, '/');
             }
         }
     }

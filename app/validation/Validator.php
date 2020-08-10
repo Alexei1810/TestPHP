@@ -44,7 +44,7 @@ class Validator{
         $xml=$this->dao->selectUsers();
         foreach($xml as $user){
             if($user->login==$login){
-                if($user->password==$password){
+                if($user->password==md5($password)){
                 $exists=true;
                 }
             }
