@@ -1,4 +1,6 @@
 <?php
-echo 'Hello, ' . $_COOKIE['name'] . '!';
+session_start();
+
+echo 'Hello, ' . $_SESSION['name'] . '!';
 
 ?>

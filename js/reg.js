@@ -68,8 +68,12 @@ $(document).ready(function () {
           if (data.message === 2) {
             $("label#email").text("Такой email уже занят");
           }
-          //неверный пароль
+          //неверный email
           if (data.message === 3) {
+            $("label#email").text("Неверный email");
+          }
+          //неверный пароль
+          if (data.message === 4) {
             $("label#password").text("Неверный пароль");
           }
         }

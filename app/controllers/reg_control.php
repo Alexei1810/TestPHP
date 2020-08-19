@@ -4,19 +4,19 @@ require_once './../validation/Validator.php';
 $validator=new Validator();
 
 $error=Array();
-if($_POST['login']===''){
+if(trim($_POST['login'])===''){
     $error[]='login';
 }
-if($_POST['password']===''){
+if(trim($_POST['password'])===''){
     $error[]='password';
 }
-if($_POST['confirm_password']===''){
+if(trim($_POST['confirm_password'])===''){
     $error[]='confirm_password';
 }
-if($_POST['email']===''){
+if(trim($_POST['email'])===''){
     $error[]='email';
 }
-if($_POST['name']===''){
+if(trim($_POST['name'])===''){
     $error[]='name';
 }
 
@@ -52,11 +52,20 @@ if(!empty($response['error'])){
         die();
     }
 
+    //validation is email right
+
+    if(!$validator->emailValidate($_POST['email'])){
+        $response['status']=false;
+        $response['message']=3;
+        echo json_encode($response);
+        die();
+    }
+
     //validation is password appropriate 
 
     if(!$validator->checkPasswords($_POST['password'], $_POST['confirm_password'])){
         $response['status']=false;
-        $response['message']=3;
+        $response['message']=4;
         echo json_encode($response);
         die();
     }

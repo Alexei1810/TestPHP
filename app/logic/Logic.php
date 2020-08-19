@@ -23,10 +23,10 @@ class Logic{
         foreach($xml as $user){
             if($user->login==$login){
                 
-                setcookie('login', $user->login, 0, '/');
-                setcookie('password', $user->password, 0, '/');
-                setcookie('email', $user->email, 0, '/');
-                setcookie('name', $user->name, 0, '/');
+                $_SESSION['login']=(string)$user->login;
+                $_SESSION['password']=(string)$user->password;
+                $_SESSION['email']=(string)$user->email;
+                $_SESSION['name']=(string)$user->name;
             }
         }
     }

@@ -1,14 +1,16 @@
 <?php
 
+session_start();
+
 require_once './../validation/Validator.php';
 $validator=new Validator();
 
 $error=Array();
 
-if($_POST['login']===''){
+if(trim($_POST['login'])===''){
     $error[]='login';
 }
-if($_POST['password']===''){
+if(trim($_POST['password'])===''){
     $error[]='password';
 }
 
@@ -47,7 +49,8 @@ if(!empty($response['error'])){
     $logic=new Logic();
     $logic->authorization($_POST['login']);
 
-    $response['name']=$_COOKIE['name'];
+    
+    $response['name']=$_SESSION['name'];
 
     echo json_encode($response);
 }

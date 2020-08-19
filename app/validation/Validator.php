@@ -10,12 +10,14 @@ class Validator{
 
     public function loginExists($login){
         $exists=false;
+        if($login!=''){
         $xml=$this->dao->selectUsers();
         foreach($xml as $user){
             if($user->login==$login){
                 $exists=true;
             }
         }
+    }
         return $exists;
     }
 
@@ -28,6 +30,14 @@ class Validator{
             }
         }
         return $exists;
+    }
+
+    public function emailValidate($email){
+        $right=false;
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $right=true;
+        }
+        return $right;
     }
 
 
